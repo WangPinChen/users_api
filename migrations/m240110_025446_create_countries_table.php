@@ -3,18 +3,18 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `{{%coutries}}`.
+ * Handles the creation of table `{{%countries}}`.
  */
-class m240110_025356_create_coutries_table extends Migration
+class m240110_025446_create_countries_table extends Migration
 {
     /**
      * {@inheritdoc}
      */
     public function safeUp()
     {
-        $this->createTable('{{%coutries}}', [
+        $this->createTable('{{%countries}}', [
             'id' => $this->primaryKey()->unsigned()->notNull()->comment('編號'),
-            'country_name' => $this->string(50)->notNull()->comment('國家名稱')
+            'country_name' => $this->string(100)->notNull()->comment('國家名稱')
         ]);
     }
 
@@ -23,6 +23,6 @@ class m240110_025356_create_coutries_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('{{%coutries}}');
+        $this->dropTable('{{%countries}}');
     }
 }

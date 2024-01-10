@@ -13,7 +13,7 @@ use yii\db\ActiveQuery;
  *   schema="Users",
  *   title="Users Model",
  *   description="This model is used to access users data",
- *   required={"id", "email", "password", "frist_name", "last_name", "gender_id", "country_id", "city_id", "district_id", "address", "birthday", "created_at", "updated_at"},
+ *   required={"id", "email", "password", "frist_name", "last_name", "gender_id", "country_id", "city_id", "district_id", "address", "birthdate", "created_at", "updated_at"},
  *   @OA\Property(property="id", type="integer", description="編號 #autoIncrement #pk", maxLength=10),
  *   @OA\Property(property="email", type="string", description="電子郵件", maxLength=100),
  *   @OA\Property(property="password", type="string", description="密碼", maxLength=255),
@@ -25,7 +25,7 @@ use yii\db\ActiveQuery;
  *   @OA\Property(property="city_id", type="integer", description="城市", maxLength=11),
  *   @OA\Property(property="district_id", type="integer", description="區域", maxLength=11),
  *   @OA\Property(property="address", type="string", description="地址", maxLength=255),
- *   @OA\Property(property="birthday", type="string", description="生日"),
+ *   @OA\Property(property="birthdate", type="string", description="生日"),
  *   @OA\Property(property="created_at", type="string", description="建立時間", default="CURRENT_TIMESTAMP"),
  *   @OA\Property(property="updated_at", type="string", description="更新時間", default="CURRENT_TIMESTAMP")
  * )
@@ -52,13 +52,17 @@ class Users extends ActiveRecord
     public function behaviors()
     {
         return [
-            [
-                'class' => AttributeTypecastBehavior::class,
-                'typecastAfterValidate' => true,
-                'typecastBeforeSave' => true,
-                'typecastAfterFind' => true,
-            ],
-            TimestampBehavior::class
+            // [
+            //     'class' => AttributeTypecastBehavior::class,
+            //     'typecastAfterValidate' => true,
+            //     'typecastBeforeSave' => true,
+            //     'typecastAfterFind' => true,
+            // ],
+            // [
+            //     'class' => BlameableBehavior::class,
+            //     'defaultValue' => 0,
+            // ],
+            // TimestampBehavior::class
         ];
     }
 
@@ -70,11 +74,11 @@ class Users extends ActiveRecord
     public function rules()
     {
         return [
-            [['email', 'password', 'frist_name', 'last_name', 'self_introduction', 'address', 'birthday', 'created_at', 'updated_at'], 'trim'],
-            [['id', 'gender_id', 'country_id', 'city_id', 'district_id'], 'integer'],
-            [['email', 'password', 'frist_name', 'last_name', 'self_introduction', 'address', 'birthday', 'created_at', 'updated_at'], 'string'],
-            [['created_at'], 'default', 'value'=>'CURRENT_TIMESTAMP'],
-            [['updated_at'], 'default', 'value'=>'CURRENT_TIMESTAMP']
+            [['email', 'password', 'frist_name', 'last_name', 'self_introduction', 'address', 'birthdate', 'created_at', 'updated_at'], 'trim'],
+            [['id', 'gender_id', 'country_id', 'city_id', 'district_id',], 'integer'],
+            [['email', 'password', 'frist_name', 'last_name', 'self_introduction', 'address', 'birthdate'], 'string'],
+            // [['created_at'], 'default', 'value'=>'CURRENT_TIMESTAMP'],
+            // [['updated_at'], 'default', 'value'=>'CURRENT_TIMESTAMP']
         ];
     }
 

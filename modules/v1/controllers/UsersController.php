@@ -218,39 +218,39 @@ class UsersController extends ActiveApiController
         return $actions;
     }
 
-    /**
-     * @OA\Post(
-     *     path="/users/search",
-     *     summary="Search",
-     *     description="Search Users by particular params",
-     *     operationId="searchUsers",
-     *     tags={"Users"},
-     *     @OA\RequestBody(
-     *         description="search Users",
-     *         required=false,
-     *         @OA\MediaType(
-     *             mediaType="application/json",
-     *             @OA\Schema(ref="#/components/schemas/xxxxxSearchModel")
-     *         ),
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="Successful operation",
-     *         @OA\MediaType(
-     *             mediaType="application/json",
-     *             @OA\Schema(
-     *              @OA\Property(property="_data", type="array", @OA\Items(ref="#/components/schemas/Users")),
-     *              @OA\Property(property="_meta", type="object", ref="#/components/schemas/Pagination")
-     *             )
-     *         )
-     *     )
-     * )
-     *
-     * Search Users
-     *
-     * @param xxxxxService $service
-     * @return ActiveDataProvider
-     */
+    // /**
+    //  * @OA\Post(
+    //  *     path="/users/search",
+    //  *     summary="Search",
+    //  *     description="Search Users by particular params",
+    //  *     operationId="searchUsers",
+    //  *     tags={"Users"},
+    //  *     @OA\RequestBody(
+    //  *         description="search Users",
+    //  *         required=false,
+    //  *         @OA\MediaType(
+    //  *             mediaType="application/json",
+    //  *             @OA\Schema(ref="#/components/schemas/xxxxxSearchModel")
+    //  *         ),
+    //  *     ),
+    //  *     @OA\Response(
+    //  *         response=200,
+    //  *         description="Successful operation",
+    //  *         @OA\MediaType(
+    //  *             mediaType="application/json",
+    //  *             @OA\Schema(
+    //  *              @OA\Property(property="_data", type="array", @OA\Items(ref="#/components/schemas/Users")),
+    //  *              @OA\Property(property="_meta", type="object", ref="#/components/schemas/Pagination")
+    //  *             )
+    //  *         )
+    //  *     )
+    //  * )
+    //  *
+    //  * Search Users
+    //  *
+    //  * @param xxxxxService $service
+    //  * @return ActiveDataProvider
+    //  */
     public function actionSearch(xxxxxService $service): ActiveDataProvider
     {
         try {

@@ -24,39 +24,44 @@ class m240110_030106_create_users_table extends Migration
             'city_id'=> $this->integer()->unsigned()->notNull()->comment('城市'),
             'district_id'=> $this->integer()->unsigned()->notNull()->comment('區域'),
             'address'=> $this->string(255)->notNull()->comment('地址'),
-            'birthday'=> $this->date()->notNull()->comment('生日'),
-            'created_at'=> $this->timestamp()->notNull()->defaultExpression('CURRENT_TIMESTAMP')->comment('建立時間'),
-            'updated_at'=> $this->timestamp()->notNull()->defaultExpression('CURRENT_TIMESTAMP')->comment('更新時間'),
+            'birthdate'=> $this->date()->notNull()->comment('生日'),
+
+            // 'created_at' => $this->timestamp()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
+            // 'updated_at' => $this->timestamp()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
+            
+
+            'created_at'=> $this->timestamp()->notNull()->comment('建立時間'),
+            'updated_at'=> $this->timestamp()->notNull()->comment('更新時間'),
         ]);
 
-        // $this->addForeignKey(
-        //     'fk-users-gender_id',
-        //     'users',
-        //     'gender_id',
-        //     'genders',
-        //     'id',
-        // );
-        // $this->addForeignKey(
-        //     'fk-users-country_id',
-        //     'users',
-        //     'country_id',
-        //     'countries',
-        //     'id',
-        // );
-        // $this->addForeignKey(
-        //     'fk-users-city_id',
-        //     'users',
-        //     'city_id',
-        //     'cities',
-        //     'id',
-        // );
-        // $this->addForeignKey(
-        //     'fk-users-district_id',
-        //     'users',
-        //     'district_id',
-        //     'districts',
-        //     'id',
-        // );
+        $this->addForeignKey(
+            'fk-users-gender_id',
+            'users',
+            'gender_id',
+            'genders',
+            'id',
+        );
+        $this->addForeignKey(
+            'fk-users-country_id',
+            'users',
+            'country_id',
+            'countries',
+            'id',
+        );
+        $this->addForeignKey(
+            'fk-users-city_id',
+            'users',
+            'city_id',
+            'cities',
+            'id',
+        );
+        $this->addForeignKey(
+            'fk-users-district_id',
+            'users',
+            'district_id',
+            'districts',
+            'id',
+        );
     }
 
     /**
