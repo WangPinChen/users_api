@@ -17,14 +17,6 @@ class m240110_025639_create_districts_table extends Migration
             'district_name' => $this->string(50)->notNull()->comment('區域名稱'),
             'city_id' => $this->integer()->unsigned()->notNull()->comment('城市編號'),
         ]);
-
-        $this->addForeignKey(
-            'fk-districts-city_id',
-            'districts',
-            'city_id',
-            'cities',
-            'id',
-        );
     }
 
     /**

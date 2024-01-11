@@ -8,6 +8,9 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\db\ActiveQuery;
 
+use app\models\Genders;
+use app\models\Countries;
+
 /**
  * @OA\Schema(
  *   schema="Users",
@@ -32,8 +35,9 @@ use yii\db\ActiveQuery;
  *
  * @version 1.0.0
  */
-class Users extends ActiveRecord
+class Users extends ActiveRecord 
 {
+
     /**
      * Return table name of users.
      *
@@ -52,17 +56,12 @@ class Users extends ActiveRecord
     public function behaviors()
     {
         return [
-            // [
-            //     'class' => AttributeTypecastBehavior::class,
-            //     'typecastAfterValidate' => true,
-            //     'typecastBeforeSave' => true,
-            //     'typecastAfterFind' => true,
-            // ],
-            // [
-            //     'class' => BlameableBehavior::class,
-            //     'defaultValue' => 0,
-            // ],
-            // TimestampBehavior::class
+            'timestamp' => [
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => new \yii\db\Expression('NOW()'),
+            ],
         ];
     }
 
@@ -77,8 +76,6 @@ class Users extends ActiveRecord
             [['email', 'password', 'frist_name', 'last_name', 'self_introduction', 'address', 'birthdate', 'created_at', 'updated_at'], 'trim'],
             [['id', 'gender_id', 'country_id', 'city_id', 'district_id',], 'integer'],
             [['email', 'password', 'frist_name', 'last_name', 'self_introduction', 'address', 'birthdate'], 'string'],
-            // [['created_at'], 'default', 'value'=>'CURRENT_TIMESTAMP'],
-            // [['updated_at'], 'default', 'value'=>'CURRENT_TIMESTAMP']
         ];
     }
 
@@ -92,4 +89,9 @@ class Users extends ActiveRecord
     {
         return ['gender', 'country', 'city', 'district'];
     }
+
+    // public function getGender()
+    // {
+    //     return $this->hasOne(Genders::class, ['id' => 'gender_id']);
+    // }
 }
