@@ -7,6 +7,8 @@ use v1\components\ActiveApiController;
 use yii\data\ActiveDataProvider;
 use yii\web\HttpException;
 
+use v1\components\user\UserIndexService;
+
 /**
  * @OA\Tag(
  *     name="Users",
@@ -218,6 +220,10 @@ class UsersController extends ActiveApiController
         return $actions;
     }
 
+    public function actionIndex(UserIndexService $service){
+        return $service -> index();
+    }
+
     /**
      * @OA\Post(
      *     path="/users/search",
@@ -230,7 +236,7 @@ class UsersController extends ActiveApiController
      *         required=false,
      *         @OA\MediaType(
      *             mediaType="application/json",
-     *             @OA\Schema(ref="#/components/schemas/xxxxxSearchModel")
+     *             @OA\Schema(ref="#/components/schemas/UserSearch")
      *         ),
      *     ),
      *     @OA\Response(

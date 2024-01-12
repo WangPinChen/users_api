@@ -1,6 +1,5 @@
 <?php
 namespace v1\models\validator;
-
 /**
  * User search model which supports search with keyword
  * 
