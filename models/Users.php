@@ -87,11 +87,26 @@ class Users extends ActiveRecord
      */
     public function extraFields()
     {
-        return ['gender', 'country', 'city', 'district'];
+        return ['genders', 'countries', 'cities', 'districts'];
     }
 
-    // public function getGender()
-    // {
-    //     return $this->hasOne(Genders::class, ['id' => 'gender_id']);
-    // }
+    public function getGenders()
+    {
+        return $this->hasOne(Genders::class, ['id' => 'gender_id']);
+    }
+
+    public function getCountries()
+    {
+        return $this->hasOne(Countries::class, ['id' => 'country_id']);
+    }
+
+    public function getCities()
+    {
+        return $this->hasOne(Cities::class, ['id' => 'city_id']);
+    }
+
+    public function getDistricts()
+    {
+        return $this->hasOne(Districts::class, ['id' => 'district_id']);
+    }
 }

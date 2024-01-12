@@ -7,8 +7,6 @@ use v1\components\ActiveApiController;
 use yii\data\ActiveDataProvider;
 use yii\web\HttpException;
 
-use app\modules\v1\components\user\UserCreateService;
-
 /**
  * @OA\Tag(
  *     name="Users",
@@ -189,7 +187,7 @@ use app\modules\v1\components\user\UserCreateService;
  *
  * @version 1.0.0
  */
-class UsersController extends ActiveApiController 
+class UsersController extends ActiveApiController
 {
     /**
      * @var string $modelClass
@@ -215,11 +213,44 @@ class UsersController extends ActiveApiController
             'class' => 'v1\components\Pagination'
         ];
 
-        unset($actions['create']);
+        unset($actions['index']);
 
         return $actions;
     }
 
+    /**
+     * @OA\Post(
+     *     path="/users/search",
+     *     summary="Search",
+     *     description="Search Users by particular params",
+     *     operationId="searchUsers",
+     *     tags={"Users"},
+     *     @OA\RequestBody(
+     *         description="search Users",
+     *         required=false,
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(ref="#/components/schemas/xxxxxSearchModel")
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *              @OA\Property(property="_data", type="array", @OA\Items(ref="#/components/schemas/Users")),
+     *              @OA\Property(property="_meta", type="object", ref="#/components/schemas/Pagination")
+     *             )
+     *         )
+     *     )
+     * )
+     *
+     * Search Users
+     *
+     * @param xxxxxService $service
+     * @return ActiveDataProvider
+     */
     public function actionSearch(xxxxxService $service): ActiveDataProvider
     {
         try {

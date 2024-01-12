@@ -2,6 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $urlManager = require __DIR__ . '/urlManager.php';
+$container = require __DIR__ . '/container.php';
 
 $config = [
     'id' => 'basic',
@@ -80,6 +81,7 @@ $config = [
         'urlManager' => $urlManager,
     ],
     'params' => $params,
+    'container' => $container,
     'modules' => [
         'v1' => [
             'class' => 'app\modules\v1\Module',

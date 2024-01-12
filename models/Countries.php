@@ -20,7 +20,7 @@ use yii\db\ActiveQuery;
  *
  * @version 1.0.0
  */
-class Coutries extends ActiveRecord
+class Countries extends ActiveRecord
 {
     /**
      * Return table name of coutries.
@@ -29,7 +29,7 @@ class Coutries extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'coutries';
+        return 'countries';
     }
 
     /**

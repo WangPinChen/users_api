@@ -73,8 +73,4 @@ class Genders extends ActiveRecord
     {
         return [];
     }
-
-    public function getUsers(){
-        return $this->hasMany(Users::class, ['gender_id' => 'id']);
-    }
 }
