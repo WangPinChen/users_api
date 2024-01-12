@@ -10,7 +10,10 @@ return [
         ['class' => 'yii\rest\UrlRule',
          'controller' => [
             'users' => 'v1/users',
-         ]
+         ],
+         'extraPatterns'=>[
+            'POST <a:(search)>'=>'<a>'
+         ],
         ]
     ]
 ];

@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\HttpException;
 
 use v1\components\user\UserIndexService;
+use v1\components\user\UserSearchService;
 
 /**
  * @OA\Tag(
@@ -257,7 +258,7 @@ class UsersController extends ActiveApiController
      * @param xxxxxService $service
      * @return ActiveDataProvider
      */
-    public function actionSearch(xxxxxService $service): ActiveDataProvider
+    public function actionSearch(UserSearchService $service): ActiveDataProvider
     {
         try {
             $params = $this->getRequestParams();
