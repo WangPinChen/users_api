@@ -272,7 +272,7 @@ class UsersController extends ActiveApiController
                 ],
                 'sort' => [
                     'enableMultiSort' => true,
-                    'params' => $params
+                    'params' => $params,
                 ]
             ]);
         } catch (Throwable $e) {

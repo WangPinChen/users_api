@@ -8,6 +8,8 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\db\ActiveQuery;
 
+use Yii;
+
 use app\models\Genders;
 use app\models\Countries;
 
@@ -37,7 +39,6 @@ use app\models\Countries;
  */
 class Users extends ActiveRecord 
 {
-
     /**
      * Return table name of users.
      *
@@ -78,7 +79,6 @@ class Users extends ActiveRecord
             [['email', 'password', 'frist_name', 'last_name', 'self_introduction', 'address', 'birthdate'], 'string'],
         ];
     }
-
 
     /**
      * return extra fields
