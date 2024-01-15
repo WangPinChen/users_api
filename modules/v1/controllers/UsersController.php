@@ -9,6 +9,7 @@ use yii\web\HttpException;
 
 use v1\components\user\UserIndexService;
 use v1\components\user\UserSearchService;
+use v1\components\user\UserCreateService;
 
 /**
  * @OA\Tag(
@@ -217,12 +218,18 @@ class UsersController extends ActiveApiController
         ];
 
         unset($actions['index']);
+        unset($actions['create']);
 
         return $actions;
     }
 
     public function actionIndex(UserIndexService $service){
         return $service -> index();
+    }
+
+    public function actionCreate(UserCreateService $service){
+        $params = $this->getRequestParams();
+        return $service -> create($params);
     }
 
     /**

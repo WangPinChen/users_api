@@ -74,10 +74,22 @@ class Users extends ActiveRecord
     public function rules()
     {
         return [
+            [['email'],'unique'],
             [['email', 'password', 'frist_name', 'last_name', 'self_introduction', 'address', 'birthdate', 'created_at', 'updated_at'], 'trim'],
             [['id', 'gender_id', 'country_id', 'city_id', 'district_id',], 'integer'],
             [['email', 'password', 'frist_name', 'last_name', 'self_introduction', 'address', 'birthdate'], 'string'],
         ];
+    }
+
+    /**
+     * attributeLabels
+     *
+     * @return array<int, mixed>
+     */
+    public function fields(){
+        $fields = parent::fields();
+        unset($fields['password']);
+        return $fields;
     }
 
     /**
